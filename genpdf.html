@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generate PDF</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>PDF Generator</h1>
+        <div class="form-column">
+            <div class="form-group">
+                <label for="logoFile">Upload Logo:</label>
+                <input type="file" id="logoFile" accept="image/*" required>
+            </div>
+
+            <div class="form-group">
+                <label for="title">Report Title:</label>
+                <input type="text" id="title" required>
+            </div>
+
+            <div class="form-group">
+                <label for="date">Date:</label>
+                <input type="date" id="date" required>
+            </div>
+
+            <div class="form-group">
+                <label for="focus">Focus:</label>
+                <input type="text" id="focus">
+            </div>
+
+            <div class="form-group">
+                <label for="organizer">Organizer:</label>
+                <input type="text" id="organizer" required>
+            </div>
+
+            <div class="form-group">
+                <label for="resourcePerson">Resource Person/Guest:</label>
+                <input type="text" id="resourcePerson" required>
+            </div>
+
+            <div class="form-group">
+                <label for="profile">Profile:</label>
+                <input type="text" id="profile">
+            </div>
+
+            <div class="form-group">
+                <label for="attendanceCount">Total Attendance:</label>
+                <input type="number" id="attendanceCount" required>
+            </div>
+
+            <div class="form-group">
+                <label for="outcomes">Outcomes:</label>
+                <input type="text" id="outcomes">
+            </div>
+
+            <div class="form-group">
+                <label for="venue">Venue:</label>
+                <input type="text" id="venue">
+            </div>
+
+            <div class="form-group">
+                <label for="description">Description:</label>
+                <textarea id="description"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="images">Upload Images (max 6):</label>
+                <input type="file" id="images" accept="image/*" multiple onchange="checkImageCount(this)">
+            </div>
+
+            <div class="form-group">
+                <label for="brochure">Upload Brochure (PDF):</label>
+                <input type="file" id="brochure" accept="application/pdf">
+            </div>
+
+            <div class="form-group">
+                <label for="attendanceFile">Upload Attendance File (PDF):</label>
+                <input type="file" id="attendanceFile" accept="application/pdf">
+            </div>
+
+            <div class="form-group">
+                <button onclick="generatePDF()">Generate PDF</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+    <script>
+        function checkImageCount(input) {
+            const files = input.files;
+            if (files.length > 6) {
+                alert("You can only upload a maximum of 6 images.");
+                input.value = ''; // Reset the input if limit exceeded
+            }
+        }
+    </script>
+</body>
+</html>
